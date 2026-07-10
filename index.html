@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中国十大热门旅行景点攻略</title>
+  <meta name="description" content="精选中国十大热门旅行景点的详尽攻略，包含交通、门票、路线、美食、住宿等实用信息。" />
+  <script type="module" src="/src/main.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/src/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>">
+</head>
+<body class="min-h-screen bg-gray-50">
+
+  <!-- 导航栏 -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-blue-600">
+          <span>🗺️</span>
+          <span>中国十大旅行攻略</span>
+        </a>
+        <nav class="hidden sm:flex items-center gap-6 text-sm text-gray-600">
+          <a href="#attractions" class="hover:text-blue-600 transition">全部景点</a>
+          <span class="text-gray-300">|</span>
+          <button id="themeToggle" class="hover:text-blue-600 transition" title="切换主题">🌙</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero 区域 -->
+  <section class="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">探索中国十大热门旅行目的地</h1>
+        <p class="text-lg sm:text-xl text-blue-100 mb-8">精选十大景点，详尽的交通、门票、路线、美食、住宿攻略，让你的旅行轻松无忧。</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#attractions" class="inline-flex items-center gap-2 bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition shadow-lg">
+            浏览全部景点
+            <span>→</span>
+          </a>
+          <span class="inline-flex items-center gap-1 text-blue-200 text-sm px-2">📸 10个景点 · 覆盖全国</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 筛选栏 -->
+  <section class="bg-white border-b border-gray-200 sticky top-16 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+        <div class="flex gap-2 flex-wrap" id="filterButtons">
+          <button data-filter="all" class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium bg-blue-600 text-white">全部</button>
+          <button data-filter="历史文化" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200">🏛️ 历史文化</button>
+          <button data-filter="自然风光" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200">🏔️ 自然风光</button>
+          <button data-filter="亲子休闲" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200">🐼 亲子休闲</button>
+        </div>
+        <div class="sm:ml-auto relative w-full sm:w-64">
+          <input id="searchInput" type="text" placeholder="搜索景点名称..." class="w-full pl-9 pr-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 景点卡片网格 -->
+  <section id="attractions" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div id="skeletonGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 骨架屏：数据加载中的占位 -->
+      <div class="skeleton rounded-xl h-80" data-skeleton></div>
+      <div class="skeleton rounded-xl h-80" data-skeleton></div>
+      <div class="skeleton rounded-xl h-80" data-skeleton></div>
+      <div class="skeleton rounded-xl h-80" data-skeleton></div>
+      <div class="skeleton rounded-xl h-80" data-skeleton></div>
+      <div class="skeleton rounded-xl h-80" data-skeleton></div>
+    </div>
+    <div id="cardGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden"></div>
+    <div id="emptyState" class="hidden text-center py-20">
+      <p class="text-5xl mb-4">🔍</p>
+      <p class="text-gray-500 text-lg">没有找到匹配的景点，试试其他关键词吧</p>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-800 text-gray-400 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-white font-semibold mb-3">关于本站</h3>
+          <p class="text-sm leading-relaxed">为中国十大热门旅行景点提供详尽攻略，帮助旅行者规划完美旅程。数据仅供参考，请以景区官方信息为准。</p>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-3">快速链接</h3>
+          <ul class="space-y-1 text-sm" id="footerLinks"></ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-3">免责声明</h3>
+          <p class="text-sm leading-relaxed">本站攻略信息仅供参考，门票价格和开放时间可能变化，请以景区官方公告为准。</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm">© 2026 中国十大旅行攻略 · 用心探索每一段旅程</div>
+    </div>
+  </footer>
+</body>
+</html>

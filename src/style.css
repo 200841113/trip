@@ -1,0 +1,28 @@
+/* 自定义样式 - Tailwind 由 CDN 加载 */
+
+html { scroll-behavior: smooth; }
+body { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, sans-serif; }
+
+.card-hover { transition: all 0.3s; }
+.card-hover:hover { transform: translateY(-0.25rem); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+
+.tag-pill { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; background-color: #dbeafe; color: #1d4ed8; }
+.tag-pill.bg-green-50 { background-color: #f0fdf4; color: #15803d; }
+.tag-pill.bg-orange-50 { background-color: #fff7ed; color: #c2410c; }
+.tag-pill.bg-blue-50 { background-color: #eff6ff; color: #1d4ed8; }
+.tag-pill.bg-green-50 { background-color: #f0fdf4; color: #15803d; }
+
+.star-rating { color: #f59e0b; }
+
+.info-label { font-size: 0.875rem; font-weight: 500; color: #6b7280; }
+.info-value { font-size: 0.875rem; color: #111827; }
+
+.detail-content h2 { font-size: 1.25rem; font-weight: 700; color: #111827; margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; }
+.detail-content h3 { font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+.detail-content p { color: #4b5563; line-height: 1.625; margin-bottom: 1rem; }
+.detail-content ul { margin-bottom: 1rem; }
+.detail-content li { color: #4b5563; line-height: 1.625; padding-left: 1.25rem; position: relative; margin-bottom: 0.25rem; }
+.detail-content li::before { content: "\2022"; position: absolute; left: 0; color: #3b82f6; font-weight: 700; }
+
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
