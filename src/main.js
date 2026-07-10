@@ -7,6 +7,7 @@ const PROVINCE_COLORS = {
 }
 
 let allAttractions = []
+import attractionsData from './data.js'
 
 // 渲染星星评分
 function renderStars(rating) {
@@ -79,8 +80,7 @@ function renderFooterLinks(attractions) {
 // 初始化
 async function init() {
   try {
-    const res = await fetch('/data/attractions.json')
-    const data = await res.json()
+    const data = attractionsData
     allAttractions = data.attractions
     renderCards(allAttractions)
     renderFooterLinks(allAttractions)

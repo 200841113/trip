@@ -1,4 +1,5 @@
 let allAttractions = []
+import attractionsData from './data.js'
 
 // URL 参数读取
 function getParam(name) {
@@ -266,8 +267,7 @@ async function init() {
   }
 
   try {
-    const res = await fetch('/data/attractions.json')
-    const data = await res.json()
+    const data = attractionsData
     allAttractions = data.attractions
     const attraction = allAttractions.find(a => a.id === id)
     if (!attraction) throw new Error('not found')
